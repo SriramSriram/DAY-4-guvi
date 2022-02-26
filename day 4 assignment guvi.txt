@@ -23,186 +23,275 @@ Use the rest countries API url -> https://restcountries.eu/rest/v2/all and displ
 ANSWER:
 USED TWO COUNTRY API TO PRINT THE OUTPUT IN THE CONSOLE.
 CODE:
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
 
-let data=[
-    {
-      name: "Afghanistan",
-      topLevelDomain: [
-        ".af"
-      ],
-      alpha2Code: "AF",
-      alpha3Code: "AFG",
-      callingCodes: [
-        "93"
-      ],
-      capital: "Kabul",
-      altSpellings: [
-        "AF",
-        "Afġānistān"
-      ],
-      region: "Asia",
-      subregion: "Southern Asia",
-      population: 27657145,
-      latlng: [
-        33,
-        65
-      ],
-      demonym: "Afghan",
-      area: 652230,
-      gini: 27.8,
-      timezones: [
-        "UTC+04:30"
-      ],
-      borders: [
-        "IRN",
-        "PAK",
-        "TKM",
-        "UZB",
-        "TJK",
-        "CHN"
-      ],
-      nativeName: "افغانستان",
-      numericCode: "004",
-      currencies: [
-        {
-          code: "AFN",
-          "name": "Afghan afghani",
-          "symbol": "؋"
-        }
-      ],
-      languages: [
-        {
-          "iso639_1": "ps",
-          "iso639_2": "pus",
-          "name": "Pashto",
-          "nativeName": "پښتو"
-        },
-        {
-          "iso639_1": "uz",
-          "iso639_2": "uzb",
-          "name": "Uzbek",
-          "nativeName": "Oʻzbek"
-        },
-        {
-          "iso639_1": "tk",
-          "iso639_2": "tuk",
-          "name": "Turkmen",
-          "nativeName": "Türkmen"
-        }
-      ],
-      translations: {
-        "de": "Afghanistan",
-        "es": "Afganistán",
-        "fr": "Afghanistan",
-        "ja": "アフガニスタン",
-        "it": "Afghanistan",
-        "br": "Afeganistão",
-        "pt": "Afeganistão",
-        "nl": "Afghanistan",
-        "hr": "Afganistan",
-        "fa": "افغانستان"
-      },
-      flag: "https://restcountries.eu/data/afg.svg",
-      regionalBlocs: [
-        {
-          "acronym": "SAARC",
-          "name": "South Asian Association for Regional Cooperation",
-          "otherAcronyms": [],
-          "otherNames": []
-        }
-      ],
-      cioc: "AFG"
-    },
-    {
-      name: "Åland Islands",
-      topLevelDomain: [
-        ".ax"
-      ],
-      alpha2Code: "AX",
-      alpha3Code: "ALA",
-      callingCodes: [
-        "358"
-      ],
-      capital: "Mariehamn",
-      altSpellings: [
-        "AX",
-        "Aaland",
-        "Aland",
-        "Ahvenanmaa"
-      ],
-      region: "Europe",
-      subregion: "Northern Europe",
-      population: 28875,
-      latlng: [
-        60.116667,
-        19.9
-      ],
-      demonym: "Ålandish",
-      area: 1580,
-      gini: null,
-      timezones: [
-        "UTC+02:00"
-      ],
-      borders: [],
-      nativeName: "Åland",
-      numericCode: "248",
-      currencies: [
-        {
-          "code": "EUR",
-          "name": "Euro",
-          "symbol": "€"
-        }
-      ],
-      languages: [
-        {
-          "iso639_1": "sv",
-          "iso639_2": "swe",
-          "name": "Swedish",
-          "nativeName": "svenska"
-        }
-      ],
-      translations: {
-        "de": "Åland",
-        "es": "Alandia",
-        "fr": "Åland",
-        "ja": "オーランド諸島",
-        "it": "Isole Aland",
-        "br": "Ilhas de Aland",
-        "pt": "Ilhas de Aland",
-        "nl": "Ålandeilanden",
-        "hr": "Ålandski otoci",
-        "fa": "جزایر الند"
-      },
-      flag: "https://restcountries.eu/data/ala.svg",
-      regionalBlocs: [
-        {
-          "acronym": "EU",
-          "name": "European Union",
-          "otherAcronyms": [],
-          "otherNames": []
-        }
-      ],
-      "cioc": ""
-    },
-    
-  ]
-
-for(i=0;i<data.length;i++){
-    user = data[i];
-    console.log(
-        `
-        flags:${user.flag}
-        `
-    );
-}
+// Open a request
+xhr.open("GET", "https://restcountries.com/v3.1/all");
+xhr.send();
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    var data= JSON.parse(xhr.response)
+    // console.log(data);
+    for(var i=0; i<data.length; i++) {
+        console.log(data[i].flag);
+    }
+  }
+};
 
 OUTPUT:
 
-
-        flags:https://restcountries.eu/data/afg.svg
-        
-
-        flags:https://restcountries.eu/data/ala.svg
+          🇲🇪
+new.js:13 🇹🇰
+new.js:13 🇨🇺
+new.js:13 🇬🇵
+new.js:13 🇬🇷
+new.js:13 🇲🇶
+new.js:13 🇻🇪
+new.js:13 🇺🇲
+new.js:13 🇼🇸
+new.js:13 🇰🇭
+new.js:13 🇭🇰
+new.js:13 🇲🇷
+new.js:13 🇾🇪
+new.js:13 🇩🇯
+new.js:13 🇻🇬
+new.js:13 🇪🇬
+new.js:13 🇭🇷
+new.js:13 🇱🇮
+new.js:13 🇰🇿
+new.js:13 🇩🇰
+new.js:13 🇧🇯
+new.js:13 🇲🇵
+new.js:13 🇧🇲
+new.js:13 🇮🇹
+new.js:13 🇬🇸
+new.js:13 🇿🇦
+new.js:13 🇷🇼
+new.js:13 🇲🇴
+new.js:13 🇧🇮
+new.js:13 🇬🇫
+new.js:13 🇺🇦
+new.js:13 🇹🇬
+new.js:13 🇹🇼
+new.js:13 🇦🇶
+new.js:13 🇨🇰
+new.js:13 🇬🇼
+new.js:13 🇸🇽
+new.js:13 🇨🇮
+new.js:13 🇮🇸
+new.js:13 🇵🇾
+new.js:13 🇸🇿
+new.js:13 🇭🇺
+new.js:13 🇭🇲
+new.js:13 🇲🇩
+new.js:13 🇨🇱
+new.js:13 🇬🇱
+new.js:13 🇳🇷
+new.js:13 🇺🇾
+new.js:13 🇪🇨
+new.js:13 🇱🇰
+new.js:13 🇵🇲
+new.js:13 🇬🇹
+new.js:13 🇬🇭
+new.js:13 🇮🇱
+new.js:13 🇲🇿
+new.js:13 🇧🇹
+new.js:13 🇰🇾
+new.js:13 🇰🇵
+new.js:13 🇧🇭
+new.js:13 🇫🇴
+new.js:13 🇦🇼
+new.js:13 🇮🇶
+new.js:13 🇮🇴
+new.js:13 🇲🇦
+new.js:13 🇲🇰
+new.js:13 🇵🇱
+new.js:13 🇸🇧
+new.js:13 🇧🇷
+new.js:13 🇸🇮
+new.js:13 🇴🇲
+new.js:13 🇹🇭
+new.js:13 🇨🇫
+new.js:13 🇸🇻
+new.js:13 🇦🇲
+new.js:13 🇭🇳
+new.js:13 🇿🇲
+new.js:13 🇸🇯
+new.js:13 🇱🇺
+new.js:13 🇨🇴
+new.js:13 🇧🇧
+new.js:13 🇱🇾
+new.js:13 🇷🇸
+new.js:13 🇲🇨
+new.js:13 🇸🇪
+new.js:13 🇳🇪
+new.js:13 🇦🇴
+new.js:13 🇵🇦
+new.js:13 🇲🇺
+new.js:13 🇹🇿
+new.js:13 🇲🇱
+new.js:13 🇨🇲
+new.js:13 🇬🇪
+new.js:13 🇬🇲
+new.js:13 🇲🇹
+new.js:13 🇦🇸
+new.js:13 🇿🇼
+new.js:13 🇧🇿
+new.js:13 🇰🇳
+new.js:13 🇻🇦
+new.js:13 🇫🇲
+new.js:13 🇹🇩
+new.js:13 🇧🇾
+new.js:13 🇨🇦
+new.js:13 🇦🇷
+new.js:13 🇸🇷
+new.js:13 🇦🇺
+new.js:13 🇬🇳
+new.js:13 🇸🇸
+new.js:13 🇳🇦
+new.js:13 🇶🇦
+new.js:13 🇲🇲
+new.js:13 🇫🇰
+new.js:13 🇮🇪
+new.js:13 🇸🇹
+new.js:13 🇧🇻
+new.js:13 🇱🇹
+new.js:13 🇨🇩
+new.js:13 🇵🇭
+new.js:13 🇧🇳
+new.js:13 🇸🇱
+new.js:13 🇲🇳
+new.js:13 🇪🇭
+new.js:13 🇵🇳
+new.js:13 🇸🇩
+new.js:13 🇹🇱
+new.js:13 🇦🇮
+new.js:13 🇨🇼
+new.js:13 🇨🇬
+new.js:13 🇫🇮
+new.js:13 🇦🇹
+new.js:13 🇪🇹
+new.js:13 🇲🇫
+new.js:13 🇻🇨
+new.js:13 🇧🇦
+new.js:13 🇰🇲
+new.js:13 undefined
+new.js:13 🇳🇴
+new.js:13 🇰🇼
+new.js:13 🇧🇫
+new.js:13 🇼🇫
+new.js:13 🇧🇩
+new.js:13 🇩🇲
+new.js:13 🇯🇲
+new.js:13 🇦🇩
+new.js:13 🇬🇮
+new.js:13 🇲🇾
+new.js:13 🇬🇧
+new.js:13 🇲🇬
+new.js:13 🇨🇭
+new.js:13 🇹🇻
+new.js:13 🇩🇿
+new.js:13 🇷🇺
+new.js:13 🇻🇳
+new.js:13 🇨🇨
+new.js:13 🇳🇵
+new.js:13 🇳🇱
+new.js:13 🇰🇮
+new.js:13 🇱🇷
+new.js:13 🇸🇴
+new.js:13 🇷🇴
+new.js:13 🇲🇭
+new.js:13 🇪🇸
+new.js:13 🇺🇸
+new.js:13 🇷🇪
+new.js:13 🇸🇬
+new.js:13 🇹🇳
+new.js:13 🇦🇿
+new.js:13 🇵🇬
+new.js:13 🇱🇸
+new.js:13 🇧🇸
+new.js:13 🇨🇳
+new.js:13 🇾🇹
+new.js:13 🇸🇳
+new.js:13 🇨🇾
+new.js:13 🇦🇪
+new.js:13 🇹🇲
+new.js:13 🇱🇦
+new.js:13 🇧🇪
+new.js:13 🇯🇴
+new.js:13 🇵🇸
+new.js:13 🇸🇨
+new.js:13 🇺🇿
+new.js:13 🇳🇨
+new.js:13 🇦🇽
+new.js:13 🇳🇮
+new.js:13 🇬🇺
+new.js:13 🇰🇪
+new.js:13 🇵🇫
+new.js:13 🇯🇪
+new.js:13 🇨🇿
+new.js:13 🇺🇬
+new.js:13 🇳🇿
+new.js:13 🇲🇸
+new.js:13 🇧🇱
+new.js:13 🇨🇷
+new.js:13 🇲🇽
+new.js:13 🇪🇷
+new.js:13 🇬🇩
+new.js:13 🇦🇬
+new.js:13 🇯🇵
+new.js:13 🇸🇰
+new.js:13 🇻🇮
+new.js:13 🇽🇰
+new.js:13 🇻🇺
+new.js:13 🇵🇼
+new.js:13 🇧🇼
+new.js:13 🇹🇴
+new.js:13 🇫🇯
+new.js:13 🇫🇷
+new.js:13 🇦🇱
+new.js:13 🇵🇹
+new.js:13 🇳🇺
+new.js:13 🇵🇪
+new.js:13 🇮🇩
+new.js:13 🇱🇨
+new.js:13 🇬🇬
+new.js:13 🇰🇬
+new.js:13 🇩🇪
+new.js:13 🇧🇴
+new.js:13 🇩🇴
+new.js:13 🇵🇷
+new.js:13 🇱🇧
+new.js:13 🇲🇻
+new.js:13 🇸🇲
+new.js:13 🇰🇷
+new.js:13 🇳🇫
+new.js:13 🇸🇾
+new.js:13 🇦🇫
+new.js:13 🇲🇼
+new.js:13 🇹🇯
+new.js:13 🇹🇷
+new.js:13 🇬🇶
+new.js:13 🇹🇨
+new.js:13 🇮🇳
+new.js:13 🇳🇬
+new.js:13 🇵🇰
+new.js:13 🇱🇻
+new.js:13 🇮🇷
+new.js:13 🇨🇻
+new.js:13 🇹🇫
+new.js:13 🇧🇬
+new.js:13 🇪🇪
+new.js:13 🇨🇽
+new.js:13 🇭🇹
+new.js:13 🇸🇭
+new.js:13 🇮🇲
+new.js:13 🇬🇦
+new.js:13 🇬🇾
+new.js:13 🇸🇦
+new.js:13 🇹🇹
 
 QN3:
 Use the same rest countries and print all countries name, region, sub region and population
@@ -211,193 +300,1529 @@ ANSWER:
 
 CODE:
 
-let data=[
-    {
-      name: "Afghanistan",
-      topLevelDomain: [
-        ".af"
-      ],
-      alpha2Code: "AF",
-      alpha3Code: "AFG",
-      callingCodes: [
-        "93"
-      ],
-      capital: "Kabul",
-      altSpellings: [
-        "AF",
-        "Afġānistān"
-      ],
-      region: "Asia",
-      subregion: "Southern Asia",
-      population: 27657145,
-      latlng: [
-        33,
-        65
-      ],
-      demonym: "Afghan",
-      area: 652230,
-      gini: 27.8,
-      timezones: [
-        "UTC+04:30"
-      ],
-      borders: [
-        "IRN",
-        "PAK",
-        "TKM",
-        "UZB",
-        "TJK",
-        "CHN"
-      ],
-      nativeName: "افغانستان",
-      numericCode: "004",
-      currencies: [
-        {
-          code: "AFN",
-          "name": "Afghan afghani",
-          "symbol": "؋"
-        }
-      ],
-      languages: [
-        {
-          "iso639_1": "ps",
-          "iso639_2": "pus",
-          "name": "Pashto",
-          "nativeName": "پښتو"
-        },
-        {
-          "iso639_1": "uz",
-          "iso639_2": "uzb",
-          "name": "Uzbek",
-          "nativeName": "Oʻzbek"
-        },
-        {
-          "iso639_1": "tk",
-          "iso639_2": "tuk",
-          "name": "Turkmen",
-          "nativeName": "Türkmen"
-        }
-      ],
-      translations: {
-        "de": "Afghanistan",
-        "es": "Afganistán",
-        "fr": "Afghanistan",
-        "ja": "アフガニスタン",
-        "it": "Afghanistan",
-        "br": "Afeganistão",
-        "pt": "Afeganistão",
-        "nl": "Afghanistan",
-        "hr": "Afganistan",
-        "fa": "افغانستان"
-      },
-      flag: "https://restcountries.eu/data/afg.svg",
-      regionalBlocs: [
-        {
-          "acronym": "SAARC",
-          "name": "South Asian Association for Regional Cooperation",
-          "otherAcronyms": [],
-          "otherNames": []
-        }
-      ],
-      cioc: "AFG"
-    },
-    {
-      name: "Åland Islands",
-      topLevelDomain: [
-        ".ax"
-      ],
-      alpha2Code: "AX",
-      alpha3Code: "ALA",
-      callingCodes: [
-        "358"
-      ],
-      capital: "Mariehamn",
-      altSpellings: [
-        "AX",
-        "Aaland",
-        "Aland",
-        "Ahvenanmaa"
-      ],
-      region: "Europe",
-      subregion: "Northern Europe",
-      population: 28875,
-      latlng: [
-        60.116667,
-        19.9
-      ],
-      demonym: "Ålandish",
-      area: 1580,
-      gini: null,
-      timezones: [
-        "UTC+02:00"
-      ],
-      borders: [],
-      nativeName: "Åland",
-      numericCode: "248",
-      currencies: [
-        {
-          "code": "EUR",
-          "name": "Euro",
-          "symbol": "€"
-        }
-      ],
-      languages: [
-        {
-          "iso639_1": "sv",
-          "iso639_2": "swe",
-          "name": "Swedish",
-          "nativeName": "svenska"
-        }
-      ],
-      translations: {
-        "de": "Åland",
-        "es": "Alandia",
-        "fr": "Åland",
-        "ja": "オーランド諸島",
-        "it": "Isole Aland",
-        "br": "Ilhas de Aland",
-        "pt": "Ilhas de Aland",
-        "nl": "Ålandeilanden",
-        "hr": "Ålandski otoci",
-        "fa": "جزایر الند"
-      },
-      flag: "https://restcountries.eu/data/ala.svg",
-      regionalBlocs: [
-        {
-          "acronym": "EU",
-          "name": "European Union",
-          "otherAcronyms": [],
-          "otherNames": []
-        }
-      ],
-      "cioc": ""
-    },
-    
-  ]
+// 1.initialize a xml http request
+var xhr = new XMLHttpRequest();
 
-for(i=0;i<data.length;i++){
-    user = data[i];
-    console.log(
-        `
-        Name:${user.name}
-        Region:${user.region}
-        Subregion:${user.subregion}
-        Population:${user.population}
-        `
-    );
-}
+// Open a request
+xhr.open("GET", "https://restcountries.com/v3.1/all");
+xhr.send();
+xhr.onload = function () {
+  //please provide me data if my request lies in range 200-299
+  if (xhr.status >= 200 && xhr.status < 300) {
+    var data= JSON.parse(xhr.response)
+    // console.log(data);
+    for(var i=0; i<data.length; i++) {
+        console.log(`
+        countryName:${data[i].name.common}
+        region:${data[i].region}
+        subRegion:${data[i].subRegion}
+        population:${data[i].population}
+        `)
+    }
+  }
+};
 
-OUTPUT:
 
 
 
-        Name:Afghanistan
-        Region:Asia
-        Subregion:Southern Asia
-        Population:27657145
+OUTPUT:
+new.js:13 
+        countryName:Montenegro
+        region:Europe
+        subRegion:undefined
+        population:621718
         
- 
-        Name:Åland Islands
-        Region:Europe
-        Subregion:Northern Europe
-        Population:28875
+new.js:13 
+        countryName:Tokelau
+        region:Oceania
+        subRegion:undefined
+        population:1411
+        
+new.js:13 
+        countryName:Cuba
+        region:Americas
+        subRegion:undefined
+        population:11326616
+        
+new.js:13 
+        countryName:Guadeloupe
+        region:Americas
+        subRegion:undefined
+        population:400132
+        
+new.js:13 
+        countryName:Greece
+        region:Europe
+        subRegion:undefined
+        population:10715549
+        
+new.js:13 
+        countryName:Martinique
+        region:Americas
+        subRegion:undefined
+        population:378243
+        
+new.js:13 
+        countryName:Venezuela
+        region:Americas
+        subRegion:undefined
+        population:28435943
+        
+new.js:13 
+        countryName:United States Minor Outlying Islands
+        region:Americas
+        subRegion:undefined
+        population:300
+        
+new.js:13 
+        countryName:Samoa
+        region:Oceania
+        subRegion:undefined
+        population:198410
+        
+new.js:13 
+        countryName:Cambodia
+        region:Asia
+        subRegion:undefined
+        population:16718971
+        
+new.js:13 
+        countryName:Hong Kong
+        region:Asia
+        subRegion:undefined
+        population:7500700
+        
+new.js:13 
+        countryName:Mauritania
+        region:Africa
+        subRegion:undefined
+        population:4649660
+        
+new.js:13 
+        countryName:Yemen
+        region:Asia
+        subRegion:undefined
+        population:29825968
+        
+new.js:13 
+        countryName:Djibouti
+        region:Africa
+        subRegion:undefined
+        population:988002
+        
+new.js:13 
+        countryName:British Virgin Islands
+        region:Americas
+        subRegion:undefined
+        population:30237
+        
+new.js:13 
+        countryName:Egypt
+        region:Africa
+        subRegion:undefined
+        population:102334403
+        
+new.js:13 
+        countryName:Croatia
+        region:Europe
+        subRegion:undefined
+        population:4047200
+        
+new.js:13 
+        countryName:Liechtenstein
+        region:Europe
+        subRegion:undefined
+        population:38137
+        
+new.js:13 
+        countryName:Kazakhstan
+        region:Asia
+        subRegion:undefined
+        population:18754440
+        
+new.js:13 
+        countryName:Denmark
+        region:Europe
+        subRegion:undefined
+        population:5831404
+        
+new.js:13 
+        countryName:Benin
+        region:Africa
+        subRegion:undefined
+        population:12123198
+        
+new.js:13 
+        countryName:Northern Mariana Islands
+        region:Oceania
+        subRegion:undefined
+        population:57557
+        
+new.js:13 
+        countryName:Bermuda
+        region:Americas
+        subRegion:undefined
+        population:63903
+        
+new.js:13 
+        countryName:Italy
+        region:Europe
+        subRegion:undefined
+        population:59554023
+        
+new.js:13 
+        countryName:South Georgia
+        region:Antarctic
+        subRegion:undefined
+        population:30
+        
+new.js:13 
+        countryName:South Africa
+        region:Africa
+        subRegion:undefined
+        population:59308690
+        
+new.js:13 
+        countryName:Rwanda
+        region:Africa
+        subRegion:undefined
+        population:12952209
+        
+new.js:13 
+        countryName:Macau
+        region:Asia
+        subRegion:undefined
+        population:649342
+        
+new.js:13 
+        countryName:Burundi
+        region:Africa
+        subRegion:undefined
+        population:11890781
+        
+new.js:13 
+        countryName:French Guiana
+        region:Americas
+        subRegion:undefined
+        population:254541
+        
+new.js:13 
+        countryName:Ukraine
+        region:Europe
+        subRegion:undefined
+        population:44134693
+        
+new.js:13 
+        countryName:Togo
+        region:Africa
+        subRegion:undefined
+        population:8278737
+        
+new.js:13 
+        countryName:Taiwan
+        region:Asia
+        subRegion:undefined
+        population:23503349
+        
+new.js:13 
+        countryName:Antarctica
+        region:Antarctic
+        subRegion:undefined
+        population:1000
+        
+new.js:13 
+        countryName:Cook Islands
+        region:Oceania
+        subRegion:undefined
+        population:18100
+        
+new.js:13 
+        countryName:Guinea-Bissau
+        region:Africa
+        subRegion:undefined
+        population:1967998
+        
+new.js:13 
+        countryName:Sint Maarten
+        region:Americas
+        subRegion:undefined
+        population:40812
+        
+new.js:13 
+        countryName:Ivory Coast
+        region:Africa
+        subRegion:undefined
+        population:26378275
+        
+new.js:13 
+        countryName:Iceland
+        region:Europe
+        subRegion:undefined
+        population:366425
+        
+new.js:13 
+        countryName:Paraguay
+        region:Americas
+        subRegion:undefined
+        population:7132530
+        
+new.js:13 
+        countryName:Eswatini
+        region:Africa
+        subRegion:undefined
+        population:1160164
+        
+new.js:13 
+        countryName:Hungary
+        region:Europe
+        subRegion:undefined
+        population:9749763
+        
+new.js:13 
+        countryName:Heard Island and McDonald Islands
+        region:Antarctic
+        subRegion:undefined
+        population:0
+        
+new.js:13 
+        countryName:Moldova
+        region:Europe
+        subRegion:undefined
+        population:2617820
+        
+new.js:13 
+        countryName:Chile
+        region:Americas
+        subRegion:undefined
+        population:19116209
+        
+new.js:13 
+        countryName:Greenland
+        region:Americas
+        subRegion:undefined
+        population:56367
+        
+new.js:13 
+        countryName:Nauru
+        region:Oceania
+        subRegion:undefined
+        population:10834
+        
+new.js:13 
+        countryName:Uruguay
+        region:Americas
+        subRegion:undefined
+        population:3473727
+        
+new.js:13 
+        countryName:Ecuador
+        region:Americas
+        subRegion:undefined
+        population:17643060
+        
+new.js:13 
+        countryName:Sri Lanka
+        region:Asia
+        subRegion:undefined
+        population:21919000
+        
+new.js:13 
+        countryName:Saint Pierre and Miquelon
+        region:Americas
+        subRegion:undefined
+        population:6069
+        
+new.js:13 
+        countryName:Guatemala
+        region:Americas
+        subRegion:undefined
+        population:16858333
+        
+new.js:13 
+        countryName:Ghana
+        region:Africa
+        subRegion:undefined
+        population:31072945
+        
+new.js:13 
+        countryName:Israel
+        region:Asia
+        subRegion:undefined
+        population:9216900
+        
+new.js:13 
+        countryName:Mozambique
+        region:Africa
+        subRegion:undefined
+        population:31255435
+        
+new.js:13 
+        countryName:Bhutan
+        region:Asia
+        subRegion:undefined
+        population:771612
+        
+new.js:13 
+        countryName:Cayman Islands
+        region:Americas
+        subRegion:undefined
+        population:65720
+        
+new.js:13 
+        countryName:North Korea
+        region:Asia
+        subRegion:undefined
+        population:25778815
+        
+new.js:13 
+        countryName:Bahrain
+        region:Asia
+        subRegion:undefined
+        population:1701583
+        
+new.js:13 
+        countryName:Faroe Islands
+        region:Europe
+        subRegion:undefined
+        population:48865
+        
+new.js:13 
+        countryName:Aruba
+        region:Americas
+        subRegion:undefined
+        population:106766
+        
+new.js:13 
+        countryName:Iraq
+        region:Asia
+        subRegion:undefined
+        population:40222503
+        
+new.js:13 
+        countryName:British Indian Ocean Territory
+        region:Africa
+        subRegion:undefined
+        population:3000
+        
+new.js:13 
+        countryName:Morocco
+        region:Africa
+        subRegion:undefined
+        population:36910558
+        
+new.js:13 
+        countryName:North Macedonia
+        region:Europe
+        subRegion:undefined
+        population:2077132
+        
+new.js:13 
+        countryName:Poland
+        region:Europe
+        subRegion:undefined
+        population:37950802
+        
+new.js:13 
+        countryName:Solomon Islands
+        region:Oceania
+        subRegion:undefined
+        population:686878
+        
+new.js:13 
+        countryName:Brazil
+        region:Americas
+        subRegion:undefined
+        population:212559409
+        
+new.js:13 
+        countryName:Slovenia
+        region:Europe
+        subRegion:undefined
+        population:2100126
+        
+new.js:13 
+        countryName:Oman
+        region:Asia
+        subRegion:undefined
+        population:5106622
+        
+new.js:13 
+        countryName:Thailand
+        region:Asia
+        subRegion:undefined
+        population:69799978
+        
+new.js:13 
+        countryName:Central African Republic
+        region:Africa
+        subRegion:undefined
+        population:4829764
+        
+new.js:13 
+        countryName:El Salvador
+        region:Americas
+        subRegion:undefined
+        population:6486201
+        
+new.js:13 
+        countryName:Armenia
+        region:Asia
+        subRegion:undefined
+        population:2963234
+        
+new.js:13 
+        countryName:Honduras
+        region:Americas
+        subRegion:undefined
+        population:9904608
+        
+new.js:13 
+        countryName:Zambia
+        region:Africa
+        subRegion:undefined
+        population:18383956
+        
+new.js:13 
+        countryName:Svalbard and Jan Mayen
+        region:Europe
+        subRegion:undefined
+        population:2562
+        
+new.js:13 
+        countryName:Luxembourg
+        region:Europe
+        subRegion:undefined
+        population:632275
+        
+new.js:13 
+        countryName:Colombia
+        region:Americas
+        subRegion:undefined
+        population:50882884
+        
+new.js:13 
+        countryName:Barbados
+        region:Americas
+        subRegion:undefined
+        population:287371
+        
+new.js:13 
+        countryName:Libya
+        region:Africa
+        subRegion:undefined
+        population:6871287
+        
+new.js:13 
+        countryName:Serbia
+        region:Europe
+        subRegion:undefined
+        population:6908224
+        
+new.js:13 
+        countryName:Monaco
+        region:Europe
+        subRegion:undefined
+        population:39244
+        
+new.js:13 
+        countryName:Sweden
+        region:Europe
+        subRegion:undefined
+        population:10353442
+        
+new.js:13 
+        countryName:Niger
+        region:Africa
+        subRegion:undefined
+        population:24206636
+        
+new.js:13 
+        countryName:Angola
+        region:Africa
+        subRegion:undefined
+        population:32866268
+        
+new.js:13 
+        countryName:Panama
+        region:Americas
+        subRegion:undefined
+        population:4314768
+        
+new.js:13 
+        countryName:Mauritius
+        region:Africa
+        subRegion:undefined
+        population:1265740
+        
+new.js:13 
+        countryName:Tanzania
+        region:Africa
+        subRegion:undefined
+        population:59734213
+        
+new.js:13 
+        countryName:Mali
+        region:Africa
+        subRegion:undefined
+        population:20250834
+        
+new.js:13 
+        countryName:Cameroon
+        region:Africa
+        subRegion:undefined
+        population:26545864
+        
+new.js:13 
+        countryName:Georgia
+        region:Asia
+        subRegion:undefined
+        population:3714000
+        
+new.js:13 
+        countryName:Gambia
+        region:Africa
+        subRegion:undefined
+        population:2416664
+        
+new.js:13 
+        countryName:Malta
+        region:Europe
+        subRegion:undefined
+        population:525285
+        
+new.js:13 
+        countryName:American Samoa
+        region:Oceania
+        subRegion:undefined
+        population:55197
+        
+new.js:13 
+        countryName:Zimbabwe
+        region:Africa
+        subRegion:undefined
+        population:14862927
+        
+new.js:13 
+        countryName:Belize
+        region:Americas
+        subRegion:undefined
+        population:397621
+        
+new.js:13 
+        countryName:Saint Kitts and Nevis
+        region:Americas
+        subRegion:undefined
+        population:53192
+        
+new.js:13 
+        countryName:Vatican City
+        region:Europe
+        subRegion:undefined
+        population:451
+        
+new.js:13 
+        countryName:Micronesia
+        region:Oceania
+        subRegion:undefined
+        population:115021
+        
+new.js:13 
+        countryName:Chad
+        region:Africa
+        subRegion:undefined
+        population:16425859
+        
+new.js:13 
+        countryName:Belarus
+        region:Europe
+        subRegion:undefined
+        population:9398861
+        
+new.js:13 
+        countryName:Canada
+        region:Americas
+        subRegion:undefined
+        population:38005238
+        
+new.js:13 
+        countryName:Argentina
+        region:Americas
+        subRegion:undefined
+        population:45376763
+        
+new.js:13 
+        countryName:Suriname
+        region:Americas
+        subRegion:undefined
+        population:586634
+        
+new.js:13 
+        countryName:Australia
+        region:Oceania
+        subRegion:undefined
+        population:25687041
+        
+new.js:13 
+        countryName:Guinea
+        region:Africa
+        subRegion:undefined
+        population:13132792
+        
+new.js:13 
+        countryName:South Sudan
+        region:Africa
+        subRegion:undefined
+        population:11193729
+        
+new.js:13 
+        countryName:Namibia
+        region:Africa
+        subRegion:undefined
+        population:2540916
+        
+new.js:13 
+        countryName:Qatar
+        region:Asia
+        subRegion:undefined
+        population:2881060
+        
+new.js:13 
+        countryName:Myanmar
+        region:Asia
+        subRegion:undefined
+        population:54409794
+        
+new.js:13 
+        countryName:Falkland Islands
+        region:Americas
+        subRegion:undefined
+        population:2563
+        
+new.js:13 
+        countryName:Ireland
+        region:Europe
+        subRegion:undefined
+        population:4994724
+        
+new.js:13 
+        countryName:São Tomé and Príncipe
+        region:Africa
+        subRegion:undefined
+        population:219161
+        
+new.js:13 
+        countryName:Bouvet Island
+        region:Antarctic
+        subRegion:undefined
+        population:0
+        
+new.js:13 
+        countryName:Lithuania
+        region:Europe
+        subRegion:undefined
+        population:2794700
+        
+new.js:13 
+        countryName:DR Congo
+        region:Africa
+        subRegion:undefined
+        population:89561404
+        
+new.js:13 
+        countryName:Philippines
+        region:Asia
+        subRegion:undefined
+        population:109581085
+        
+new.js:13 
+        countryName:Brunei
+        region:Asia
+        subRegion:undefined
+        population:437483
+        
+new.js:13 
+        countryName:Sierra Leone
+        region:Africa
+        subRegion:undefined
+        population:7976985
+        
+new.js:13 
+        countryName:Mongolia
+        region:Asia
+        subRegion:undefined
+        population:3278292
+        
+new.js:13 
+        countryName:Western Sahara
+        region:Africa
+        subRegion:undefined
+        population:510713
+        
+new.js:13 
+        countryName:Pitcairn Islands
+        region:Oceania
+        subRegion:undefined
+        population:56
+        
+new.js:13 
+        countryName:Sudan
+        region:Africa
+        subRegion:undefined
+        population:43849269
+        
+new.js:13 
+        countryName:Timor-Leste
+        region:Asia
+        subRegion:undefined
+        population:1318442
+        
+new.js:13 
+        countryName:Anguilla
+        region:Americas
+        subRegion:undefined
+        population:13452
+        
+new.js:13 
+        countryName:Curaçao
+        region:Americas
+        subRegion:undefined
+        population:155014
+        
+new.js:13 
+        countryName:Republic of the Congo
+        region:Africa
+        subRegion:undefined
+        population:89561404
+        
+new.js:13 
+        countryName:Finland
+        region:Europe
+        subRegion:undefined
+        population:5530719
+        
+new.js:13 
+        countryName:Austria
+        region:Europe
+        subRegion:undefined
+        population:8917205
+        
+new.js:13 
+        countryName:Ethiopia
+        region:Africa
+        subRegion:undefined
+        population:114963583
+        
+new.js:13 
+        countryName:Saint Martin
+        region:Americas
+        subRegion:undefined
+        population:38659
+        
+new.js:13 
+        countryName:Saint Vincent and the Grenadines
+        region:Americas
+        subRegion:undefined
+        population:110947
+        
+new.js:13 
+        countryName:Bosnia and Herzegovina
+        region:Europe
+        subRegion:undefined
+        population:3280815
+        
+new.js:13 
+        countryName:Comoros
+        region:Africa
+        subRegion:undefined
+        population:869595
+        
+new.js:13 
+        countryName:Caribbean Netherlands
+        region:Americas
+        subRegion:undefined
+        population:25987
+        
+new.js:13 
+        countryName:Norway
+        region:Europe
+        subRegion:undefined
+        population:5379475
+        
+new.js:13 
+        countryName:Kuwait
+        region:Asia
+        subRegion:undefined
+        population:4270563
+        
+new.js:13 
+        countryName:Burkina Faso
+        region:Africa
+        subRegion:undefined
+        population:20903278
+        
+new.js:13 
+        countryName:Wallis and Futuna
+        region:Oceania
+        subRegion:undefined
+        population:11750
+        
+new.js:13 
+        countryName:Bangladesh
+        region:Asia
+        subRegion:undefined
+        population:164689383
+        
+new.js:13 
+        countryName:Dominica
+        region:Americas
+        subRegion:undefined
+        population:71991
+        
+new.js:13 
+        countryName:Jamaica
+        region:Americas
+        subRegion:undefined
+        population:2961161
+        
+new.js:13 
+        countryName:Andorra
+        region:Europe
+        subRegion:undefined
+        population:77265
+        
+new.js:13 
+        countryName:Gibraltar
+        region:Europe
+        subRegion:undefined
+        population:33691
+        
+new.js:13 
+        countryName:Malaysia
+        region:Asia
+        subRegion:undefined
+        population:32365998
+        
+new.js:13 
+        countryName:United Kingdom
+        region:Europe
+        subRegion:undefined
+        population:67215293
+        
+new.js:13 
+        countryName:Madagascar
+        region:Africa
+        subRegion:undefined
+        population:27691019
+        
+new.js:13 
+        countryName:Switzerland
+        region:Europe
+        subRegion:undefined
+        population:8654622
+        
+new.js:13 
+        countryName:Tuvalu
+        region:Oceania
+        subRegion:undefined
+        population:11792
+        
+new.js:13 
+        countryName:Algeria
+        region:Africa
+        subRegion:undefined
+        population:510713
+        
+new.js:13 
+        countryName:Russia
+        region:Europe
+        subRegion:undefined
+        population:144104080
+        
+new.js:13 
+        countryName:Vietnam
+        region:Asia
+        subRegion:undefined
+        population:97338583
+        
+new.js:13 
+        countryName:Cocos (Keeling) Islands
+        region:Oceania
+        subRegion:undefined
+        population:544
+        
+new.js:13 
+        countryName:Nepal
+        region:Asia
+        subRegion:undefined
+        population:29136808
+        
+new.js:13 
+        countryName:Netherlands
+        region:Europe
+        subRegion:undefined
+        population:16655799
+        
+new.js:13 
+        countryName:Kiribati
+        region:Oceania
+        subRegion:undefined
+        population:119446
+        
+new.js:13 
+        countryName:Liberia
+        region:Africa
+        subRegion:undefined
+        population:5057677
+        
+new.js:13 
+        countryName:Somalia
+        region:Africa
+        subRegion:undefined
+        population:15893219
+        
+new.js:13 
+        countryName:Romania
+        region:Europe
+        subRegion:undefined
+        population:19286123
+        
+new.js:13 
+        countryName:Marshall Islands
+        region:Oceania
+        subRegion:undefined
+        population:59194
+        
+new.js:13 
+        countryName:Spain
+        region:Europe
+        subRegion:undefined
+        population:47351567
+        
+new.js:13 
+        countryName:United States
+        region:Americas
+        subRegion:undefined
+        population:329484123
+        
+new.js:13 
+        countryName:Réunion
+        region:Africa
+        subRegion:undefined
+        population:840974
+        
+new.js:13 
+        countryName:Singapore
+        region:Asia
+        subRegion:undefined
+        population:5685807
+        
+new.js:13 
+        countryName:Tunisia
+        region:Africa
+        subRegion:undefined
+        population:11818618
+        
+new.js:13 
+        countryName:Azerbaijan
+        region:Asia
+        subRegion:undefined
+        population:10110116
+        
+new.js:13 
+        countryName:Papua New Guinea
+        region:Oceania
+        subRegion:undefined
+        population:8947027
+        
+new.js:13 
+        countryName:Lesotho
+        region:Africa
+        subRegion:undefined
+        population:2142252
+        
+new.js:13 
+        countryName:Bahamas
+        region:Americas
+        subRegion:undefined
+        population:393248
+        
+new.js:13 
+        countryName:China
+        region:Asia
+        subRegion:undefined
+        population:1402112000
+        
+new.js:13 
+        countryName:Mayotte
+        region:Africa
+        subRegion:undefined
+        population:226915
+        
+new.js:13 
+        countryName:Senegal
+        region:Africa
+        subRegion:undefined
+        population:16743930
+        
+new.js:13 
+        countryName:Cyprus
+        region:Europe
+        subRegion:undefined
+        population:1207361
+        
+new.js:13 
+        countryName:United Arab Emirates
+        region:Asia
+        subRegion:undefined
+        population:9890400
+        
+new.js:13 
+        countryName:Turkmenistan
+        region:Asia
+        subRegion:undefined
+        population:6031187
+        
+new.js:13 
+        countryName:Laos
+        region:Asia
+        subRegion:undefined
+        population:7275556
+        
+new.js:13 
+        countryName:Belgium
+        region:Europe
+        subRegion:undefined
+        population:11555997
+        
+new.js:13 
+        countryName:Jordan
+        region:Asia
+        subRegion:undefined
+        population:10203140
+        
+new.js:13 
+        countryName:Palestine
+        region:Asia
+        subRegion:undefined
+        population:4803269
+        
+new.js:13 
+        countryName:Seychelles
+        region:Africa
+        subRegion:undefined
+        population:98462
+        
+new.js:13 
+        countryName:Uzbekistan
+        region:Asia
+        subRegion:undefined
+        population:34232050
+        
+new.js:13 
+        countryName:New Caledonia
+        region:Oceania
+        subRegion:undefined
+        population:271960
+        
+new.js:13 
+        countryName:Åland Islands
+        region:Europe
+        subRegion:undefined
+        population:29458
+        
+new.js:13 
+        countryName:Nicaragua
+        region:Americas
+        subRegion:undefined
+        population:6624554
+        
+new.js:13 
+        countryName:Guam
+        region:Oceania
+        subRegion:undefined
+        population:168783
+        
+new.js:13 
+        countryName:Kenya
+        region:Africa
+        subRegion:undefined
+        population:53771300
+        
+new.js:13 
+        countryName:French Polynesia
+        region:Oceania
+        subRegion:undefined
+        population:280904
+        
+new.js:13 
+        countryName:Jersey
+        region:Europe
+        subRegion:undefined
+        population:100800
+        
+new.js:13 
+        countryName:Czechia
+        region:Europe
+        subRegion:undefined
+        population:10698896
+        
+new.js:13 
+        countryName:Uganda
+        region:Africa
+        subRegion:undefined
+        population:45741000
+        
+new.js:13 
+        countryName:New Zealand
+        region:Oceania
+        subRegion:undefined
+        population:5084300
+        
+new.js:13 
+        countryName:Montserrat
+        region:Americas
+        subRegion:undefined
+        population:4922
+        
+new.js:13 
+        countryName:Saint Barthélemy
+        region:Americas
+        subRegion:undefined
+        population:4255
+        
+new.js:13 
+        countryName:Costa Rica
+        region:Americas
+        subRegion:undefined
+        population:5094114
+        
+new.js:13 
+        countryName:Mexico
+        region:Americas
+        subRegion:undefined
+        population:128932753
+        
+new.js:13 
+        countryName:Eritrea
+        region:Africa
+        subRegion:undefined
+        population:5352000
+        
+new.js:13 
+        countryName:Grenada
+        region:Americas
+        subRegion:undefined
+        population:112519
+        
+new.js:13 
+        countryName:Antigua and Barbuda
+        region:Americas
+        subRegion:undefined
+        population:97928
+        
+new.js:13 
+        countryName:Japan
+        region:Asia
+        subRegion:undefined
+        population:125836021
+        
+new.js:13 
+        countryName:Slovakia
+        region:Europe
+        subRegion:undefined
+        population:5458827
+        
+new.js:13 
+        countryName:United States Virgin Islands
+        region:Americas
+        subRegion:undefined
+        population:106290
+        
+new.js:13 
+        countryName:Kosovo
+        region:Europe
+        subRegion:undefined
+        population:1775378
+        
+new.js:13 
+        countryName:Vanuatu
+        region:Oceania
+        subRegion:undefined
+        population:307150
+        
+new.js:13 
+        countryName:Palau
+        region:Oceania
+        subRegion:undefined
+        population:18092
+        
+new.js:13 
+        countryName:Botswana
+        region:Africa
+        subRegion:undefined
+        population:2351625
+        
+new.js:13 
+        countryName:Tonga
+        region:Oceania
+        subRegion:undefined
+        population:105697
+        
+new.js:13 
+        countryName:Fiji
+        region:Oceania
+        subRegion:undefined
+        population:896444
+        
+new.js:13 
+        countryName:France
+        region:Europe
+        subRegion:undefined
+        population:67391582
+        
+new.js:13 
+        countryName:Albania
+        region:Europe
+        subRegion:undefined
+        population:2837743
+        
+new.js:13 
+        countryName:Portugal
+        region:Europe
+        subRegion:undefined
+        population:10305564
+        
+new.js:13 
+        countryName:Niue
+        region:Oceania
+        subRegion:undefined
+        population:1470
+        
+new.js:13 
+        countryName:Peru
+        region:Americas
+        subRegion:undefined
+        population:32971846
+        
+new.js:13 
+        countryName:Indonesia
+        region:Asia
+        subRegion:undefined
+        population:273523621
+        
+new.js:13 
+        countryName:Saint Lucia
+        region:Americas
+        subRegion:undefined
+        population:183629
+        
+new.js:13 
+        countryName:Guernsey
+        region:Europe
+        subRegion:undefined
+        population:62999
+        
+new.js:13 
+        countryName:Kyrgyzstan
+        region:Asia
+        subRegion:undefined
+        population:6591600
+        
+new.js:13 
+        countryName:Germany
+        region:Europe
+        subRegion:undefined
+        population:83240525
+        
+new.js:13 
+        countryName:Bolivia
+        region:Americas
+        subRegion:undefined
+        population:11673029
+        
+new.js:13 
+        countryName:Dominican Republic
+        region:Americas
+        subRegion:undefined
+        population:10847904
+        
+new.js:13 
+        countryName:Puerto Rico
+        region:Americas
+        subRegion:undefined
+        population:3194034
+        
+new.js:13 
+        countryName:Lebanon
+        region:Asia
+        subRegion:undefined
+        population:6825442
+        
+new.js:13 
+        countryName:Maldives
+        region:Asia
+        subRegion:undefined
+        population:540542
+        
+new.js:13 
+        countryName:San Marino
+        region:Europe
+        subRegion:undefined
+        population:33938
+        
+new.js:13 
+        countryName:South Korea
+        region:Asia
+        subRegion:undefined
+        population:51780579
+        
+new.js:13 
+        countryName:Norfolk Island
+        region:Oceania
+        subRegion:undefined
+        population:2302
+        
+new.js:13 
+        countryName:Syria
+        region:Asia
+        subRegion:undefined
+        population:17500657
+        
+new.js:13 
+        countryName:Afghanistan
+        region:Asia
+        subRegion:undefined
+        population:40218234
+        
+new.js:13 
+        countryName:Malawi
+        region:Africa
+        subRegion:undefined
+        population:19129955
+        
+new.js:13 
+        countryName:Tajikistan
+        region:Asia
+        subRegion:undefined
+        population:9537642
+        
+new.js:13 
+        countryName:Turkey
+        region:Asia
+        subRegion:undefined
+        population:84339067
+        
+new.js:13 
+        countryName:Equatorial Guinea
+        region:Africa
+        subRegion:undefined
+        population:1402985
+        
+new.js:13 
+        countryName:Turks and Caicos Islands
+        region:Americas
+        subRegion:undefined
+        population:38718
+        
+new.js:13 
+        countryName:India
+        region:Asia
+        subRegion:undefined
+        population:1380004385
+        
+new.js:13 
+        countryName:Nigeria
+        region:Africa
+        subRegion:undefined
+        population:206139587
+        
+new.js:13 
+        countryName:Pakistan
+        region:Asia
+        subRegion:undefined
+        population:220892331
+        
+new.js:13 
+        countryName:Latvia
+        region:Europe
+        subRegion:undefined
+        population:1901548
+        
+new.js:13 
+        countryName:Iran
+        region:Asia
+        subRegion:undefined
+        population:83992953
+        
+new.js:13 
+        countryName:Cape Verde
+        region:Africa
+        subRegion:undefined
+        population:555988
+        
+new.js:13 
+        countryName:French Southern and Antarctic Lands
+        region:Antarctic
+        subRegion:undefined
+        population:400
+        
+new.js:13 
+        countryName:Bulgaria
+        region:Europe
+        subRegion:undefined
+        population:6927288
+        
+new.js:13 
+        countryName:Estonia
+        region:Europe
+        subRegion:undefined
+        population:1331057
+        
+new.js:13 
+        countryName:Christmas Island
+        region:Oceania
+        subRegion:undefined
+        population:2072
+        
+new.js:13 
+        countryName:Haiti
+        region:Americas
+        subRegion:undefined
+        population:11402533
+        
+new.js:13 
+        countryName:Saint Helena, Ascension and Tristan da Cunha
+        region:Africa
+        subRegion:undefined
+        population:53192
+        
+new.js:13 
+        countryName:Isle of Man
+        region:Europe
+        subRegion:undefined
+        population:85032
+        
+new.js:13 
+        countryName:Gabon
+        region:Africa
+        subRegion:undefined
+        population:2225728
+        
+new.js:13 
+        countryName:Guyana
+        region:Americas
+        subRegion:undefined
+        population:786559
+        
+new.js:13 
+        countryName:Saudi Arabia
+        region:Asia
+        subRegion:undefined
+        population:34813867
+        
+new.js:13 
+        countryName:Trinidad and Tobago
+        region:Americas
+        subRegion:undefined
+        population:1399491
         
